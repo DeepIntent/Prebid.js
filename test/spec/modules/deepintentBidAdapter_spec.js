@@ -21,8 +21,6 @@ describe('Deepintent adapter', function () {
           h: 90,
           pos: 1,
           user: {
-            id: 'di_testuid',
-            buyeruid: 'di_testbuyeruid',
             yob: 2002,
             gender: 'F'
           },
@@ -145,8 +143,6 @@ describe('Deepintent adapter', function () {
       let bRequest = spec.buildRequests(request);
       let data = JSON.parse(bRequest.data);
       expect(data.user).to.be.a('object');
-      expect(data.user.id).to.equal('di_testuid');
-      expect(data.user.buyeruid).to.equal('di_testbuyeruid');
       expect(data.user.yob).to.equal(2002);
       expect(data.user.gender).to.equal('F');
     });
