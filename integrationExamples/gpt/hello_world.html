@@ -18,18 +18,41 @@
         var adUnits = [{
             code: 'div-gpt-ad-1460505748561-0',
             mediaTypes: {
-                banner: {
-                    sizes: [[300, 250], [300,600]],
+                video: {
+                    playerSize: [640, 480],
+                    context: 'instream'
                 }
             },
             // Replace this object to test a new Adapter!
             bids: [{
-                bidder: 'appnexus',
+                bidder: 'deepintent',
+                bidId: '4d85fb3d90920f11',
                 params: {
-                    placementId: 13144370
+                tagId: '422',
+                bidfloor: 0,
+                    secure: 0,
+                    ext: {
+                        deepintent: {}
+                    },
+                video: {
+                    mimes: ['video/mp4'],
+                    minduration: 6,
+                    maxduration: 30,
+                    startdelay: 0,
+                    playbackmethod: [1],
+                    protocols: [1, 2, 3, 4, 5, 6],
+                    maxbitrate: 30000,
+                    h: 1080,
+                    linearity: 1,
+                    w: 1920,
+                    ext: {
+                        vast_url_rq: 1,
+                        player_type: 3
+                    },
+                    placement: 1
+                    }
                 }
             }]
-
         }];
 
         var pbjs = pbjs || {};

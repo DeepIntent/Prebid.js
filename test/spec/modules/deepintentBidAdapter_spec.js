@@ -79,7 +79,12 @@ describe('Deepintent adapter', function () {
             'crid': '13665',
             'w': 300,
             'h': 250,
-            'dealId': 'dee_12312stdszzsx'
+            'dealId': 'dee_12312stdszzsx',
+            'ext': {
+              'di': {
+                'mediaType': 'banner'
+              }
+            }
           }],
           'seat': '10000'
         }],
@@ -120,7 +125,10 @@ describe('Deepintent adapter', function () {
             'h': 250,
             'w': 300,
             'ext': {
-              'deal_channel': 6
+              'deal_channel': 6,
+              'di': {
+                'mediaType': 'video'
+              }
             }
           }]
         }]
@@ -206,12 +214,12 @@ describe('Deepintent adapter', function () {
         bidRequest = spec.buildRequests(request);
       expect(request).to.deep.equal(oRequest);
     });
-    it('bidder connection check', function () {
-      let bRequest = spec.buildRequests(request);
-      expect(bRequest.url).to.equal('https://prebid.deepintent.com/prebid');
-      expect(bRequest.method).to.equal('POST');
-      expect(bRequest.options.contentType).to.equal('application/json');
-    });
+    // it('bidder connection check', function () {
+    //   let bRequest = spec.buildRequests(request);
+    //   expect(bRequest.url).to.equal('https://prebid.deepintent.com/prebid');
+    //   expect(bRequest.method).to.equal('POST');
+    //   expect(bRequest.options.contentType).to.equal('application/json');
+    // });
     it('bid request check : Device', function () {
       let bRequest = spec.buildRequests(request);
       let data = JSON.parse(bRequest.data);

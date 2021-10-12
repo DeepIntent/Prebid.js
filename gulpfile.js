@@ -32,7 +32,7 @@ const execa = require('execa');
 var prebid = require('./package.json');
 var dateString = 'Updated : ' + (new Date()).toISOString().substring(0, 10);
 var banner = '/* <%= prebid.name %> v<%= prebid.version %>\n' + dateString + '*/\n';
-var port = 9999;
+var port = 80;
 const FAKE_SERVER_HOST = argv.host ? argv.host : 'localhost';
 const FAKE_SERVER_PORT = 4444;
 const { spawn } = require('child_process');

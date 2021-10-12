@@ -2,7 +2,7 @@ import { generateUUID, deepSetValue, deepAccess, isArray, isInteger, logError, l
 import {registerBidder} from '../src/adapters/bidderFactory.js';
 import {BANNER, VIDEO} from '../src/mediaTypes.js';
 const BIDDER_CODE = 'deepintent';
-const BIDDER_ENDPOINT = 'https://prebid.deepintent.com/prebid';
+const BIDDER_ENDPOINT = 'https://test-bidder.deepintent.com/prebid';
 const USER_SYNC_URL = 'https://cdn.deepintent.com/syncpixel.html';
 const DI_M_V = '1.0.0';
 export const ORTB_VIDEO_PARAMS = {
@@ -32,7 +32,7 @@ export const ORTB_VIDEO_PARAMS = {
 };
 export const spec = {
   code: BIDDER_CODE,
-  supportedMediaTypes: [BANNER],
+  supportedMediaTypes: [BANNER, VIDEO],
   aliases: [],
 
   // tagId is mandatory param
@@ -121,14 +121,10 @@ export const spec = {
 
 };
 function _checkMediaType(bid) {
-  let videoRegex = new RegExp(/VAST\s+version/);
-  let mediaType;
-  if (bid.adm && bid.adm.indexOf('deepintent_wrapper') >= 0) {
-    mediaType = BANNER;
-  } else if (videoRegex.test(bid.adm)) {
-    mediaType = VIDEO;
+  if (bid && bid.ext && bid.ext.di && typeof bid.ext.di.mediaType === 'string') {
+    return bid.ext.di.mediaType.toLowerCase();
   }
-  return mediaType;
+  return null;
 }
 
 function clean(obj) {
@@ -284,7 +280,8 @@ function buildDevice() {
     dnt: (navigator.doNotTrack == 'yes' || navigator.doNotTrack === '1') ? 1 : 0,
     h: screen.height,
     w: screen.width,
-    language: navigator.language
+    language: navigator.language,
+    ip: '97.81.198.186',
   }
 }
 
