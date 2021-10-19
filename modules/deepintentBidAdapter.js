@@ -2,7 +2,7 @@ import { generateUUID, deepSetValue, deepAccess, isArray, isInteger, logError, l
 import {registerBidder} from '../src/adapters/bidderFactory.js';
 import {BANNER, VIDEO} from '../src/mediaTypes.js';
 const BIDDER_CODE = 'deepintent';
-const BIDDER_ENDPOINT = 'https://test-bidder.deepintent.com/prebid';
+const BIDDER_ENDPOINT = 'http://test-bidder.deepintent.com:8080/prebid';
 const USER_SYNC_URL = 'https://cdn.deepintent.com/syncpixel.html';
 const DI_M_V = '1.0.0';
 export const ORTB_VIDEO_PARAMS = {
@@ -281,7 +281,7 @@ function buildDevice() {
     h: screen.height,
     w: screen.width,
     language: navigator.language,
-    ip: '97.81.198.186',
+    // ip: '97.81.198.186',
   }
 }
 
